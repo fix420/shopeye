@@ -10,16 +10,6 @@ import * as firebase from "firebase";
 })
 export class AppComponent {
   constructor(public authAdminService: AuthService, private router: Router) {
-    const firebaseConfig = {
-      apiKey: "AIzaSyDAR-6irEfXLSr9oRenmMXWnTQHrIc9mas",
-      authDomain: "lacasadelciclista-4faf8.firebaseapp.com",
-      databaseURL: "https://lacasadelciclista-4faf8.firebaseio.com",
-      projectId: "lacasadelciclista-4faf8",
-      storageBucket: "lacasadelciclista-4faf8.appspot.com",
-      messagingSenderId: "452913255051"
-    };
-    firebase.initializeApp(firebaseConfig);
-
     this.router.events.subscribe(evt => {
       if (!(evt instanceof NavigationEnd)) {
         return;

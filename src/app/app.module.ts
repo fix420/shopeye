@@ -32,18 +32,14 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 
 // ENVIRONMENT
 import { environment } from "../environments/environment";
-import { SafeUrlPipe } from "./admin/providers/safe-url.pipe";
-import { AuthService } from "./admin/providers/auth.service";
 import { FirebaseService } from "./firebase.service";
-import { SharedModule } from "./shared/shared.module";
-import { CouponService } from "./render/providers/coupon.service";
 
 firebase.initializeApp(environment.firebase);
-firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+//firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
 
 // NG MODULE
 @NgModule({
-  declarations: [AppComponent, SafeUrlPipe],
+  declarations: [AppComponent],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -64,15 +60,11 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireDatabaseModule,
-    NgbModule.forRoot(),
-    ScrollingModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "it-IT" },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    AuthService,
     FirebaseService,
-    CouponService
   ],
   bootstrap: [AppComponent]
 })
