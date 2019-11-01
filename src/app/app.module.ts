@@ -39,7 +39,7 @@ import { SharedModule } from "./shared/shared.module";
 import { CouponService } from "./render/providers/coupon.service";
 
 firebase.initializeApp(environment.firebase);
-//firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
 
 // NG MODULE
 @NgModule({
@@ -49,7 +49,16 @@ firebase.initializeApp(environment.firebase);
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    RoutingModule,
+    RouterModule.forRoot([
+      {
+        path: "",
+        loadChildren: "./render/render.module#RenderModule"
+      },
+      {
+        path: "admin",
+        loadChildren: "./admin/admin.module#AdminModule"
+      }
+    ]),
     AngularFireModule.initializeApp(environment.firebase, "coreDB"),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
