@@ -2,11 +2,8 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { RoutingModule } from "./routing.module";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import * as papaparse from "papaparse";
 import * as firebase from "firebase/app";
 import { ScrollingModule } from "@angular/cdk/scrolling";
 
