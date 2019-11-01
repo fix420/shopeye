@@ -4,11 +4,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { RouterModule, Routes } from "@angular/router";
 import * as firebase from "firebase/app";
-import { ScrollingModule } from "@angular/cdk/scrolling";
 
 // components
-import { AppComponent } from "./app.component";
 
 // LCOALE
 import {
@@ -28,15 +27,13 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 
 // ENVIRONMENT
-import { environment } from "../environments/environment";
-import { FirebaseService } from "./firebase.service";
 
-firebase.initializeApp(environment.firebase);
+//firebase.initializeApp(environment.firebase);
 //firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
 
 // NG MODULE
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -52,17 +49,16 @@ firebase.initializeApp(environment.firebase);
         loadChildren: "./admin/admin.module#AdminModule"
       }
     ]),
-    AngularFireModule.initializeApp(environment.firebase, "coreDB"),
+    //AngularFireModule.initializeApp(environment.firebase, "coreDB"),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AngularFireDatabaseModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "it-IT" },
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    FirebaseService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule {}
